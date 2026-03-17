@@ -2,12 +2,12 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
   <channel>
     <title>龙虾人物</title>
-    <link>https://tangkk.github.io/lobster-people-podcast</link>
-    <atom:link href="https://tangkk.github.io/lobster-people-podcast/feed.xml" rel="self" type="application/rss+xml" />
+    <link>https://tangkk.github.io/lobster-bios-podcast</link>
+    <atom:link href="https://tangkk.github.io/lobster-bios-podcast/feed.xml" rel="self" type="application/rss+xml" />
     <language>zh-CN</language>
     <description>龙虾人物是一档人物故事播客。每期聚焦一位关键人物的一段代表性阶段：少煽情，多事实；少神话，多结构。
 
-文字版主页：&lt;a href="https://tangkk.github.io/lobster-people/"&gt;https://tangkk.github.io/lobster-people/&lt;/a&gt;</description>
+文字版主页：&lt;a href="https://tangkk.github.io/lobster-bios/"&gt;https://tangkk.github.io/lobster-bios/&lt;/a&gt;</description>
     <managingEditor>dengjunqi06323011@gmail.com (龙虾人物)</managingEditor>
     <webMaster>dengjunqi06323011@gmail.com (龙虾人物)</webMaster>
     <lastBuildDate>Mon, 16 Mar 2026 15:09:12 +0000</lastBuildDate>
@@ -17,17 +17,17 @@
     <itunes:author>龙虾人物</itunes:author>
     <itunes:summary>龙虾人物是一档人物故事播客。每期聚焦一位关键人物的一段代表性阶段：少煽情，多事实；少神话，多结构。
 
-文字版主页：&lt;a href="https://tangkk.github.io/lobster-people/"&gt;https://tangkk.github.io/lobster-people/&lt;/a&gt;</itunes:summary>
+文字版主页：&lt;a href="https://tangkk.github.io/lobster-bios/"&gt;https://tangkk.github.io/lobster-bios/&lt;/a&gt;</itunes:summary>
     <itunes:explicit>false</itunes:explicit>
     <itunes:owner>
       <itunes:name>龙虾人物</itunes:name>
       <itunes:email>dengjunqi06323011@gmail.com</itunes:email>
     </itunes:owner>
-    <itunes:image href="https://tangkk.github.io/lobster-people-podcast/cover.jpg" />
+    <itunes:image href="https://tangkk.github.io/lobster-bios-podcast/cover.jpg" />
     <image>
-      <url>https://tangkk.github.io/lobster-people-podcast/cover.jpg</url>
+      <url>https://tangkk.github.io/lobster-bios-podcast/cover.jpg</url>
       <title>龙虾人物</title>
-      <link>https://tangkk.github.io/lobster-people-podcast</link>
+      <link>https://tangkk.github.io/lobster-bios-podcast</link>
     </image>
     <itunes:category text="Education" />
 
@@ -37,11 +37,11 @@
 
 在克制叙事里，我们尝试把技术史与社会史并读：既看到方法如何改变世界，也看到制度如何对待提出方法的人。
 
-文字版阅读：https://tangkk.github.io/lobster-people/posts/2026-03-16-turing-misunderstood-tragedy/
+文字版阅读：https://tangkk.github.io/lobster-bios/posts/2026-03-16-turing-misunderstood-tragedy/
 </description>
       <pubDate>Mon, 16 Mar 2026 15:09:12 +0000</pubDate>
       <guid isPermaLink="false">ep001-turing-misunderstood-tragedy</guid>
-      <enclosure url="https://tangkk.github.io/lobster-people-podcast/audio/ep001-turing-misunderstood-tragedy.mp3" length="4040781" type="audio/mpeg" />
+      <enclosure url="https://tangkk.github.io/lobster-bios-podcast/audio/ep001-turing-misunderstood-tragedy.mp3" length="4040781" type="audio/mpeg" />
       <itunes:duration>00:11:18</itunes:duration>
       <itunes:explicit>false</itunes:explicit>
     </item>
