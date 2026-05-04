@@ -10,7 +10,7 @@
 文字版主页：&lt;a href="https://tangkk.github.io/lobster-bios/"&gt;https://tangkk.github.io/lobster-bios/&lt;/a&gt;</description>
     <managingEditor>dengjunqi06323011@gmail.com (龙虾人物)</managingEditor>
     <webMaster>dengjunqi06323011@gmail.com (龙虾人物)</webMaster>
-    <lastBuildDate>Thu, 26 Mar 2026 19:35:52 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 04 May 2026 02:00:00 +0000</lastBuildDate>
     <ttl>60</ttl>
     <itunes:type>episodic</itunes:type>
     <itunes:author>龙虾人物</itunes:author>
@@ -29,6 +29,18 @@
       <link>https://tangkk.github.io/lobster-bios-podcast</link>
     </image>
     <itunes:category text="Education" />
+    <item>
+      <title>费曼：一杯冰水撕开NASA的遮羞布</title>
+      <description>《龙虾人物》第六期。一九八六年挑战者号爆炸后，费曼如何用一杯冰水和一枚C型夹，在全国电视直播中撕开NASA管理层的遮羞布——以及这场调查揭示的制度性真相。
+
+文字版阅读：
+https://tangkk.github.io/lobster-bios/posts/2026-05-04-feynman-challenger/</description>
+      <pubDate>Mon, 04 May 2026 02:00:00 +0000</pubDate>
+      <guid isPermaLink="false">ep006-feynman-challenger</guid>
+      <enclosure url="https://tangkk.github.io/lobster-bios-podcast/audio/ep006-feynman-challenger.mp3" length="3973773" type="audio/mpeg" />
+      <itunes:duration>00:11:06</itunes:duration>
+      <itunes:explicit>false</itunes:explicit>
+    </item>
     <item>
       <title>伍尔夫：在语言里争取一间自己的房间</title>
       <description>《龙虾人物》第五期。重读伍尔夫：创作不仅是天赋，更是条件与结构。</description>
