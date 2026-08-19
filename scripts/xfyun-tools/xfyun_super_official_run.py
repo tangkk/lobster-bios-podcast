@@ -4,19 +4,13 @@ import hashlib
 import base64
 import hmac
 import json
+import os
 from urllib.parse import urlencode
 import ssl
 from wsgiref.handlers import format_date_time
 from datetime import datetime
 from time import mktime
 import _thread as thread
-import os
-
-
-CASE_PRESETS = {
-    "humanities": {"voice": "x6_lingyuyan_pro", "speed": 50, "volume": 52, "pitch": 50},
-    "science": {"voice": "x6_lingfeiyi_pro", "speed": 46, "volume": 52, "pitch": 48},
-}
 
 
 class Ws_Param(object):
@@ -147,26 +141,36 @@ def run_once(requrl, out_path, voice, text, speed=50, volume=50, pitch=50):
         raise RuntimeError("TTS did not complete")
 
 
+def load_profile(name):
+    """从 voice_profiles/<name>.json 读取默认音色参数。"""
+    base = os.path.dirname(os.path.abspath(__file__))
+    profile_path = os.path.join(base, "voice_profiles", f"{name}.json")
+    if not os.path.exists(profile_path):
+        return {}
+    with open(profile_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
 if __name__ == "__main__":
     import argparse
 
     ap = argparse.ArgumentParser()
     ap.add_argument("--url", default="wss://cbm01.cn-huabei-1.xf-yun.com/v1/private/mcd9m97e6")
-    ap.add_argument("--case", choices=sorted(CASE_PRESETS.keys()), default="humanities",
-                    help="人物参数预设：humanities=文科/感性，science=理科/理性")
-    ap.add_argument("--voice", default=None, help="可选覆盖预设 voice")
+    ap.add_argument("--profile", default="default", help="voice_profiles/<name>.json 音色预设")
+    ap.add_argument("--voice", default=None, help="覆盖 profile 中的 voice")
     ap.add_argument("--text", default="你好，这是一段超拟人语音测试。")
-    ap.add_argument("--speed", type=int, default=None, help="可选覆盖预设 speed")
-    ap.add_argument("--volume", type=int, default=None, help="可选覆盖预设 volume")
-    ap.add_argument("--pitch", type=int, default=None, help="可选覆盖预设 pitch")
-    ap.add_argument("--out", default="/Users/tangkk/Downloads/龙虾人物/试听/xfyun-人物-official.mp3")
+    ap.add_argument("--speed", type=int, default=None, help="覆盖 profile 中的 speed")
+    ap.add_argument("--volume", type=int, default=None, help="覆盖 profile 中的 volume")
+    ap.add_argument("--pitch", type=int, default=None, help="覆盖 profile 中的 pitch")
+    ap.add_argument("--out", default=None, help="输出 mp3 路径")
     args = ap.parse_args()
 
-    preset = CASE_PRESETS[args.case]
-    voice = args.voice if args.voice is not None else preset["voice"]
-    speed = args.speed if args.speed is not None else preset["speed"]
-    volume = args.volume if args.volume is not None else preset["volume"]
-    pitch = args.pitch if args.pitch is not None else preset["pitch"]
+    p = load_profile(args.profile)
+    voice = args.voice or p.get("voice", "x6_lingyuyan_pro")
+    speed = args.speed if args.speed is not None else p.get("speed", 50)
+    volume = args.volume if args.volume is not None else p.get("volume", 52)
+    pitch = args.pitch if args.pitch is not None else p.get("pitch", 50)
+    out = args.out or f"/tmp/xfyun-{voice}.mp3"
 
-    run_once(args.url, args.out, voice, args.text, speed=speed, volume=volume, pitch=pitch)
-    print(f"OK: {args.out} | case={args.case} | voice={voice} | speed={speed} | volume={volume} | pitch={pitch}")
+    run_once(args.url, out, voice, args.text, speed=speed, volume=volume, pitch=pitch)
+    print(f"OK: {out} | profile={args.profile} voice={voice} speed={speed} volume={volume} pitch={pitch}")
