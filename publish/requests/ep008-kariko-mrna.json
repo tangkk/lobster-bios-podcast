@@ -1,0 +1,11 @@
+{
+  "run_id": "32363264947",
+  "artifact_name": "tts-preview-b1f9397c61fb3487245e914acf813fca4b2049a0",
+  "audio_filename": "kariko-mrna-preview.mp3",
+  "audio_sha256": "a75c2ae6a5f121b285a718a96ed3ed6f700a75074465806432ccd1feacefc465",
+  "slug": "ep008-kariko-mrna",
+  "title": "卡里科：被降职之后，她为什么还在研究 mRNA",
+  "description": "《龙虾人物》第八期。一九九五年，四十岁的卡塔琳·卡里科在宾大被降职。她没有换方向。十年后，她和德鲁·魏斯曼发表了改变 mRNA 技术命运的核苷修饰研究。\n\n文字版阅读：\nhttps://tangkk.github.io/lobster-bios/posts/2026-08-20-kariko-mrna/",
+  "article_url": "https://tangkk.github.io/lobster-bios/posts/2026-08-20-kariko-mrna/",
+  "prefix": "bios"
+}
