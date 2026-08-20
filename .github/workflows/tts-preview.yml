@@ -45,15 +45,26 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install websocket-client
 
-      - name: Resolve canonical
+      - name: Resolve canonical and voice profile
         id: inputs
         shell: bash
         run: |
           TEXT_FILE=$(find episodes -maxdepth 1 -type f -name '*.txt' | sort | head -n 1)
           test -n "$TEXT_FILE" || { echo "No canonical episode text found"; exit 1; }
           STEM=$(basename "$TEXT_FILE" .txt)
+          PROFILE_FILE="episodes/${STEM}.profile"
+          PROFILE=default
+          if [ -f "$PROFILE_FILE" ]; then
+            PROFILE=$(tr -d '[:space:]' < "$PROFILE_FILE")
+          fi
+          case "$PROFILE" in
+            default|science) ;;
+            *) echo "Invalid voice profile: $PROFILE"; exit 1 ;;
+          esac
           echo "text_file=$TEXT_FILE" >> "$GITHUB_OUTPUT"
           echo "output_name=${STEM}-preview.mp3" >> "$GITHUB_OUTPUT"
+          echo "profile=$PROFILE" >> "$GITHUB_OUTPUT"
+          echo "Resolved profile: $PROFILE"
 
       - name: Validate build-only inputs
         shell: bash
@@ -69,7 +80,7 @@ jobs:
           python scripts/xfyun-tools/xfyun_segmented_run.py \
             --text-file "${{ steps.inputs.outputs.text_file }}" \
             --out "build/${{ steps.inputs.outputs.output_name }}" \
-            --profile default \
+            --profile "${{ steps.inputs.outputs.profile }}" \
             --pause-ms 350
 
       - name: Upload preview artifact
