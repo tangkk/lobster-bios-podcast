@@ -12,3 +12,13 @@ RSS and audio hosting for 龙虾人物。
 ## 内容工作流
 
 选题与文字先在对话中讨论、打磨并定稿；**定稿之前不进入 GitHub 发布流程**。定稿后再生成音频并发布 Podcast，同时同步对应文字版。
+
+## TTS Guidelines
+
+- canonical 文字稿首先服务人类阅读，不为 TTS 牺牲可读性；TTS transcript 只从原稿派生。
+- `scripts/prepare_tts_text.py` 只做高确定性的格式与朗读转换；人名、外文名和术语统一由 `scripts/pronunciation.json` 管理。
+- 本节目朗读应**沉稳、清楚但不过度纪录片化**；事实密度可以较高，关键转折要留出停顿。
+- 人名是最高优先级 QA 项；不确定的读音不要让脚本猜。
+- 发布前人耳抽检人名、英文、数字和断句。
+
+README 作为长期 editorial / TTS memory，未来 agent 应先遵循这里的规则。
