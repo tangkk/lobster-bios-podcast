@@ -11,14 +11,17 @@ RSS and audio hosting for 龙虾人物。
 
 ## 内容工作流
 
-选题与文字先在对话中讨论、打磨并定稿；**定稿之前不进入 GitHub 发布流程**。定稿后再生成音频并发布 Podcast，同时同步对应文字版。
+选题与文字先在对话中讨论、打磨；写作阶段就按 TTS-ready 标准处理。**用户确认的定稿就是 canonical 稿，同时直接用于文字版和 TTS。定稿之前不进入 GitHub 发布流程。**
 
-## TTS Guidelines
+## Canonical 稿 / TTS-ready Guidelines
 
-- canonical 文字稿首先服务人类阅读，不为 TTS 牺牲可读性；TTS transcript 只从原稿派生。
-- `scripts/prepare_tts_text.py` 只做高确定性的格式与朗读转换；人名、外文名和术语统一由 `scripts/pronunciation.json` 管理。
+- **定稿本身必须 TTS-ready，不再派生另一份改写稿。**
+- 短句和清晰叙事优先；复杂背景拆开讲，关键转折用自然分段留出呼吸。
+- 人名、外文名、年份、数字和术语在定稿时逐项检查实际朗读效果，不确定的读音不要让脚本猜。
+- 不为了 TTS 牺牲事实准确性或文字质量；目标是同一份稿既适合阅读，也像自然的人物讲述。
 - 本节目朗读应**沉稳、清楚但不过度纪录片化**；事实密度可以较高，关键转折要留出停顿。
-- 人名是最高优先级 QA 项；不确定的读音不要让脚本猜。
-- 发布前人耳抽检人名、英文、数字和断句。
+- 人名是最高优先级 QA 项。生成音频后抽检人名、英文、数字和断句；有问题优先修改 canonical 稿再重新生成。
 
-README 作为长期 editorial / TTS memory，未来 agent 应先遵循这里的规则。
+`scripts/pronunciation.json` 只用于少量 provider 特有发音 workaround；`scripts/prepare_tts_text.py` 是可选辅助工具，不属于标准稿件转换流程。
+
+README 作为长期 editorial / TTS memory，未来 agent 在写稿阶段就应遵循这里的规则。
