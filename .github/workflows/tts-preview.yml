@@ -28,6 +28,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -49,8 +51,15 @@ jobs:
         id: inputs
         shell: bash
         run: |
-          TEXT_FILE=$(find episodes -maxdepth 1 -type f -name '*.txt' | sort | head -n 1)
-          test -n "$TEXT_FILE" || { echo "No canonical episode text found"; exit 1; }
+          git fetch origin "${{ github.event.pull_request.base.ref }}" --depth=1
+          mapfile -t TEXT_FILES < <(git diff --name-only "origin/${{ github.event.pull_request.base.ref }}...HEAD" -- 'episodes/*.txt')
+          if [ "${#TEXT_FILES[@]}" -ne 1 ]; then
+            echo "Expected exactly one changed canonical episode text; found ${#TEXT_FILES[@]}"
+            printf '%s\n' "${TEXT_FILES[@]}"
+            exit 1
+          fi
+          TEXT_FILE="${TEXT_FILES[0]}"
+          test -f "$TEXT_FILE" || { echo "Canonical text does not exist: $TEXT_FILE"; exit 1; }
           STEM=$(basename "$TEXT_FILE" .txt)
           PROFILE_FILE="episodes/${STEM}.profile"
           PROFILE=default
@@ -64,6 +73,7 @@ jobs:
           echo "text_file=$TEXT_FILE" >> "$GITHUB_OUTPUT"
           echo "output_name=${STEM}-preview.mp3" >> "$GITHUB_OUTPUT"
           echo "profile=$PROFILE" >> "$GITHUB_OUTPUT"
+          echo "Resolved canonical: $TEXT_FILE"
           echo "Resolved profile: $PROFILE"
 
       - name: Validate build-only inputs
